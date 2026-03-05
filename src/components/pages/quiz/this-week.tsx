@@ -116,10 +116,9 @@ export default function ThisWeekContent() {
                 {/* Answers */}
                 <div className="flex flex-col gap-3">
                     {questions[current].answers.map((ans, i) => {
-                        const isCorrect = i === questions[current].correct
-                        const isChosen = i === chosen
-                        let bg = CARD
-                        if (chosen) bg = GREEN
+                        const isChosen = i === chosen;
+                        let bg = CARD;
+                        if (isChosen && chosen !== null) bg = GREEN;
                         // if (isChosen && !isCorrect) bg = "#c0392b"
 
                         return (
@@ -131,7 +130,7 @@ export default function ThisWeekContent() {
                             >
                                 {ans}
                             </button>
-                        )
+                        );
                     })}
                 </div>
             </div>
