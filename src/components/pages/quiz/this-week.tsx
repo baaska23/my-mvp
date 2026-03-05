@@ -8,16 +8,21 @@ const CARD = "#131f2e"
 const MUTED = "rgba(255,255,255,0.45)"
 
 const questions = [
-    { question: "2023 онд шилдэг кино шагнал хэн авсан бэ?", answers: ["Oppenheimer", "Barbie", "Avatar", "Dune"], correct: 0 },
-    { question: "Titanic киног хэн найруулсан бэ?", answers: ["Жэймс Камерон", "Спилберг", "Нолан", "Скорсезе"], correct: 0 },
-    { question: "Joker дүр аль киноны гол дүр вэ?", answers: ["Batman", "Superman", "Flash", "Thor"], correct: 0 },
-    { question: "Formula 1-ийн тухай аль кино вэ?", answers: ["Rush", "Cars", "Speed", "Drive"], correct: 0 },
-    { question: "Оскарын цом ямар материалаар хийгдсэн бэ?", answers: ["Алттай бүрсэн хүрэл", "Мөнгө", "Төмөр", "Ган"], correct: 0 },
+    { question: "Киноны үйл явдал 1930-д оны үед АНУ-ын аль мужид өрнөдөг вэ?", answers: ["Louisiana", "Mississippi", "Georgia", "Alabama"], correct: 0 },
+    { question: "Michael B. Jordan-ы бүтээсэн хоёр гол дүр хоорондоо ямар холбоотой вэ?", answers: ["Бизнесийн хамтрагчид", "Аав хүү", "Ихэр ах дүүс", "Үеэлүүд"], correct: 0 },
+    { question: "Гол дүрүүд нутагтаа буцаж ирмэгцээ ямар үйл ажиллагаа эрхэлдэг вэ?", answers: ["Сүм байгуулдаг", "Хөвөн худалдаа", "Хөгжим, бүжгийн клуб", "Мөрийтэй тоглоомын газар"], correct: 0 },
+    { question: "Sinners киноны найруулагч хэн бэ?", answers: ["Jordan Peele", "Ryan Coogler", "Antoine Fuqua", "Barry Jenkins"], correct: 0 },
+    { question: "Sinners кино Юнивишнийн аль цэсэд байгаа вэ?", answers: ["Видео сан - Ази - Тулаант, адал явдалт", "Холливуд багц", "Видео сан - Намтарчилсан", "Видео сан - Триллер, нууцлаг"], correct: 0 },
 ]
 
 const infoItems = [
-    { value: "rules", trigger: "🎯 Дүрэм", content: "5 асуулт. Хамгийн өндөр оноо ялна." },
-    { value: "prize", trigger: "🏆 Шагнал", content: "Кино үзэх эрхийн бэлгэ олгоно 🎬" },
+    { value: "rules", trigger: "🎯 Тоглоомын дүрэм", content: "Киногоо үзээд күйздээ оролцоорой.  Оноогоо цуглуулаад бэлгийн эзэн бол. 😉 Зөв хариулт бүрд 10 оноо. Бүх киногоо үзсэн бол бонус оноотой шүү." },
+    { value: "prize", trigger: "🏆 Энэ 7 хоногийн шагнал", content: "BOX тэмдэглэгээтэй хүссэн 3 киногоо үзэх эрх 🎬" },
+    { value: "score", trigger: "📊 Онооны зарчим", content: [
+        "Зөв хариулт бүр 10 оноо — max 150 оноо",
+        "Сонгосон 3 киноноос 3-ууланг үзсэн бол +20 оноо",
+        "15/15 хариулсан бол +20 оноо"
+    ] },
 ]
 
 const movies = [
@@ -107,7 +112,7 @@ export default function ThisWeekContent() {
                         const isChosen = i === chosen
                         let bg = CARD
                         if (chosen !== null && isCorrect) bg = GREEN
-                        if (isChosen && !isCorrect) bg = "#c0392b"
+                        // if (isChosen && !isCorrect) bg = "#c0392b"
 
                         return (
                             <button
