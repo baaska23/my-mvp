@@ -61,7 +61,15 @@ export default function ThisWeekContent() {
                 {infoItems.map(item => (
                     <div key={item.value} className="rounded-xl overflow-hidden px-4 py-3" style={{ backgroundColor: CARD }}>
                         <span className="text-white font-semibold">{item.trigger}</span>
-                        <p className="text-sm mt-1" style={{ color: MUTED }}>{item.content}</p>
+                        {Array.isArray(item.content) ? (
+                            <ul className="text-sm mt-1" style={{ color: MUTED, paddingLeft: '1rem', listStyle: 'disc' }}>
+                                {item.content.map((line, idx) => (
+                                    <li key={idx}>{line}</li>
+                                ))}
+                            </ul>
+                        ) : (
+                            <p className="text-sm mt-1" style={{ color: MUTED }}>{item.content}</p>
+                        )}
                     </div>
                 ))}
             </div>
