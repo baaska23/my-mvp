@@ -119,7 +119,7 @@ export default function ThisWeekContent() {
                         const isCorrect = i === questions[current].correct
                         const isChosen = i === chosen
                         let bg = CARD
-                        if (chosen !== null && isCorrect) bg = GREEN
+                        if (chosen) bg = GREEN
                         // if (isChosen && !isCorrect) bg = "#c0392b"
 
                         return (
