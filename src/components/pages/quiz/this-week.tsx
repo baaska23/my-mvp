@@ -35,6 +35,7 @@ export default function ThisWeekContent() {
     const [screen, setScreen] = useState<"main" | "info" | "quiz" | "result">("main")
     const [current, setCurrent] = useState(0)
     const [score, setScore] = useState(0)
+    const [points, setPoints] = useState(0)
     const [chosen, setChosen] = useState<number | null>(null)
     const [openInfo, setOpenInfo] = useState<string | null>(null)
     const [showRentPopup, setShowRentPopup] = useState(false)
@@ -43,6 +44,7 @@ export default function ThisWeekContent() {
         if (chosen !== null) return
         setChosen(i)
         if (i === questions[current].correct) setScore(p => p + 1)
+        if (i === questions[current].correct) setPoints(p => p + 100)
         setTimeout(() => {
             setChosen(null)
             if (current + 1 < questions.length) setCurrent(p => p + 1)
@@ -157,6 +159,9 @@ export default function ThisWeekContent() {
                 </p>
                 <p className="text-sm mb-8 text-center" style={{ color: MUTED }}>
                     {score} зөв хариулт өгсөн
+                </p>
+                <p className="text-sm mb-8 text-center" style={{ color: MUTED }}>
+                    500 онооноос {points} оноо авлаа
                 </p>
 
                 <button
